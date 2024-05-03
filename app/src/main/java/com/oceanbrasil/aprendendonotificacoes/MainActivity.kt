@@ -49,9 +49,23 @@ class MainActivity : ComponentActivity() {
                     Column {
 
                         Button(onClick = {
-                            notificationHelper.criarNotificacao()
+                            notificationHelper.criarNotificacao(
+                                "Ocean Aula Push Notification",
+                                "Esta e' uma aula de push notification no Ocean/UEA",
+                                NotificationHelper.NOTIFICATION_ID
+                            )
                         }) {
                             Text("Lançar notificação")
+                        }
+
+                        Button(onClick = {
+                            notificationHelper.criarNotificacao(
+                                "Outro botao",
+                                "Esta e' uma notificacao diferente",
+                                NotificationHelper.NOTIFICATION_OTHER_ID
+                            )
+                        }) {
+                            Text("Outra notificação")
                         }
                     }
                 }

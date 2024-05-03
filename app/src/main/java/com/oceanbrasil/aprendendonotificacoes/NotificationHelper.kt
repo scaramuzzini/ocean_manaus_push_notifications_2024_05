@@ -28,11 +28,11 @@ class NotificationHelper(private val context: Context) {
         }
     }
 
-    fun criarNotificacao() {
+    fun criarNotificacao(title: String, contextText: String, notificationId: Int) {
         var builder = NotificationCompat.Builder(context, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_launcher_foreground)
-            .setContentTitle("Ocean Aula Push Notification")
-            .setContentText("Esta e' uma aula de push notification no Ocean/UEA")
+            .setContentTitle(title)
+            .setContentText(contextText)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
 
         with(NotificationManagerCompat.from(context)) {
@@ -48,13 +48,14 @@ class NotificationHelper(private val context: Context) {
                 )
             }
             // notificationId is a unique int for each notification that you must define.
-            notify(NOTIFICATION_ID, builder.build())
+            notify(notificationId, builder.build())
         }
     }
 
     companion object {
         const val CHANNEL_ID = "ocean_notification_channel"
         const val NOTIFICATION_ID = 101
+        const val NOTIFICATION_OTHER_ID = 102
 //        var TEMP = "OK"
     }
 }
